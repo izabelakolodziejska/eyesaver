@@ -1,19 +1,21 @@
-import customtkinter as ctk
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
 
-ctk.set_appearance_mode("light")
-ctk.set_default_color_theme("green")
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
 
-app = ctk.CTk()
-app.title("eyesaver")
-app.geometry("400x200")
+        self.setWindowTitle("eyesaver")
 
-label = ctk.CTkLabel(app, text="eyesaver~", font=("Times New Roman", 20))
-#position of label
-label.pack(pady=20)
+        button = QPushButton('start')
 
-button = ctk.CTkButton(app, text="start", command=lambda: print("Button clicked!"), fg_color='pink')
-button.pack(pady=10)
+        self.setFixedSize(350, 300)
 
-app.mainloop()
+        self.setCentralWidget(button)
 
-#pallette F8FCDA E3E9C2 F9FBB2 7C6354 A5ABAF
+app = QApplication([])
+
+window = MainWindow()
+window.show()
+
+app.exec()
