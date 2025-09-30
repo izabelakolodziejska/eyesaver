@@ -1,21 +1,9 @@
-from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+import sys
+from PyQt6.QtWidgets import QApplication, QWidget
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
 
-        self.setWindowTitle("eyesaver")
-
-        button = QPushButton('start')
-
-        self.setFixedSize(350, 300)
-
-        self.setCentralWidget(button)
-
-app = QApplication([])
-
-window = MainWindow()
-window.show()
-
-app.exec()
+app = QApplication(sys.argv)
+window = QWidget()
+window.setWindowTitle("eyesaver")
+window.setFixedSize(100, 200)
+window.setStyleSheet("background-image: url(background.jpg);")
