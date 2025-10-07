@@ -24,49 +24,32 @@ title.setFont(font)
 title.setStyleSheet("color: #fff9ed; margin-top: 35px; margin-bottom: 30px;")
 title.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 
-start = QPushButton("start")
-start.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-start.setFixedSize(150, 50)
-start.setStyleSheet("""
-    QPushButton {
-        background-color: #bf87a3;         
-        color: #fff9ed;                    
-        font-family: Sitka;                
-        font-size: 15pt;      
-        font-weight: bold;             
-        border: none;                     
-        border-radius: 10px;              
-        padding: 6px 12px;     
-    }
-    QPushButton:hover {
-        background-color: #a06b85;        
-    }
-    QPushButton:pressed {
-        background-color: #6A006A;         
-    }
-""")
+def create_bttn(name):
+    bttn = QPushButton(name)
+    bttn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+    bttn.setFixedSize(150, 50)
+    bttn.setStyleSheet("""
+        QPushButton {
+            background-color: #bf87a3;         
+            color: #fff9ed;                    
+            font-family: Sitka;                
+            font-size: 15pt;      
+            font-weight: bold;             
+            border: none;                     
+            border-radius: 10px;              
+            padding: 6px 12px;     
+        }
+        QPushButton:hover {
+            background-color: #a06b85;        
+        }
+        QPushButton:pressed {
+            background-color: #6A006A;         
+        }
+    """)
+    return bttn
 
-settings = QPushButton("settings")
-settings.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-settings.setFixedSize(150, 50)
-settings.setStyleSheet("""
-    QPushButton {
-        background-color: #bf87a3;         
-        color: #fff9ed;                    
-        font-family: Sitka;                
-        font-size: 15pt;      
-        font-weight: bold;             
-        border: none;                     
-        border-radius: 10px;              
-        padding: 6px 12px;     
-    }
-    QPushButton:hover {
-        background-color: #a06b85;        
-    }
-    QPushButton:pressed {
-        background-color: #6A006A;         
-    }
-""")
+start = create_bttn('start')
+settings = create_bttn('settings')
 
 
 layout.addWidget(title)
