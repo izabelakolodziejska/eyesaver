@@ -21,12 +21,12 @@ title = QLabel("eyesaver~")
 font = QFont('Sitka', 22)
 font.setBold(True)
 title.setFont(font)
-title.setStyleSheet("color: #fff9ed; margin-top: 45px;")
+title.setStyleSheet("color: #fff9ed; margin-top: 35px; margin-bottom: 30px;")
 title.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 
 start = QPushButton("start")
 start.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-start.setFixedSize(200, 50)
+start.setFixedSize(150, 50)
 start.setStyleSheet("""
     QPushButton {
         background-color: #bf87a3;         
@@ -46,8 +46,32 @@ start.setStyleSheet("""
     }
 """)
 
+settings = QPushButton("settings")
+settings.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+settings.setFixedSize(150, 50)
+settings.setStyleSheet("""
+    QPushButton {
+        background-color: #bf87a3;         
+        color: #fff9ed;                    
+        font-family: Sitka;                
+        font-size: 15pt;      
+        font-weight: bold;             
+        border: none;                     
+        border-radius: 10px;              
+        padding: 6px 12px;     
+    }
+    QPushButton:hover {
+        background-color: #a06b85;        
+    }
+    QPushButton:pressed {
+        background-color: #6A006A;         
+    }
+""")
+
+
 layout.addWidget(title)
 layout.addWidget(start, alignment=Qt.AlignmentFlag.AlignCenter)
+layout.addWidget(settings, alignment=Qt.AlignmentFlag.AlignCenter)
 
 window.setLayout(layout)
 
