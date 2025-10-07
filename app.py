@@ -4,6 +4,11 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QFont, QCursor, QBrush, QPixmap
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
 
+widgets = {
+    'title': [],
+    'button': []
+}
+
 app = QApplication(sys.argv)
 window = QWidget()
 window.setWindowTitle("eyesaver")
@@ -23,6 +28,8 @@ font.setBold(True)
 title.setFont(font)
 title.setStyleSheet("color: #fff9ed; margin-top: 35px; margin-bottom: 30px;")
 title.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+widgets['title'].append(title)
+layout.addWidget(widgets['title'][-1])
 
 def create_bttn(name):
     bttn = QPushButton(name)
@@ -49,12 +56,13 @@ def create_bttn(name):
     return bttn
 
 start = create_bttn('start')
+widgets['button'].append(start)
+layout.addWidget(widgets['button'][-1], alignment=Qt.AlignmentFlag.AlignCenter)
+
 settings = create_bttn('settings')
+widgets['button'].append(settings)
+layout.addWidget(widgets['button'][-1], alignment=Qt.AlignmentFlag.AlignCenter)
 
-
-layout.addWidget(title)
-layout.addWidget(start, alignment=Qt.AlignmentFlag.AlignCenter)
-layout.addWidget(settings, alignment=Qt.AlignmentFlag.AlignCenter)
 
 window.setLayout(layout)
 
