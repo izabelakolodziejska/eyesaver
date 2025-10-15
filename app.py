@@ -1,6 +1,6 @@
 import sys
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QFont, QCursor, QBrush, QPixmap
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
 
@@ -26,7 +26,7 @@ title = QLabel("eyesaver~")
 font = QFont('Sitka', 22)
 font.setBold(True)
 title.setFont(font)
-title.setStyleSheet("color: #fff9ed; margin-top: 35px; margin-bottom: 30px;")
+title.setStyleSheet("color: #6A006A; margin-top: 35px; margin-bottom: 30px;")
 title.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 widgets['title'].append(title)
 layout.addWidget(widgets['title'][-1])
@@ -63,6 +63,18 @@ settings = create_bttn('settings')
 widgets['button'].append(settings)
 layout.addWidget(widgets['button'][-1], alignment=Qt.AlignmentFlag.AlignCenter)
 
+def frame2():
+    title2 = QLabel("DO YOUR STUFF!")
+    font2 = QFont('Sitka', 22)
+    font2.setBold(True)
+    title2.setFont(font2)
+    title2.setStyleSheet("color: #6A006A; margin-top: 35px; margin-bottom: 30px;")
+    title2.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+
+    timer = QTimer()
+    timer.start(1200000)
+
+    remaining_time = QLabel(f"{timer.remainingTime()}")
 
 window.setLayout(layout)
 
