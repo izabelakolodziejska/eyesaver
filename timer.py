@@ -1,10 +1,11 @@
 from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QWidget, QLabel
+from playsound import playsound
 
 
 class TimerWidget(QWidget):
     def __init__(self):
-        super.__init__()
+        super().__init__()
 
         self.time_20min = 20 * 60
         self.time_20sec = 20
@@ -22,12 +23,13 @@ class TimerWidget(QWidget):
         if self.remaining_seconds > 0:
             self.remaining_seconds -= 1
         else:
-            #to do: dźwięk końca
             #new timer for eye rest
             if self.mode == 'long':
+                playsound('conveniencestorering.wav')
                 self.mode = 'short'
                 self.remaining_seconds = self.time_20sec
             else:
+                playsound('success-jingle.wav')
                 self.mode = 'long'
                 self.remaining_seconds = self.time_20min
         self.label.setText(self.format_time(self.remaining_seconds))

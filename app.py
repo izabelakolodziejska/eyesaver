@@ -3,10 +3,12 @@ import sys
 from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QFont, QCursor, QBrush, QPixmap
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
+from timer import TimerWidget
 
 widgets = {
     'title': [],
-    'button': []
+    'button': [],
+    'timer' :[]
 }
 
 app = QApplication(sys.argv)
@@ -70,11 +72,15 @@ def frame2():
     title2.setFont(font2)
     title2.setStyleSheet("color: #6A006A; margin-top: 35px; margin-bottom: 30px;")
     title2.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+    widgets['title'].append(title2)
+    layout.addWidget(widgets['title'][-1])
 
-    timer = QTimer()
-    timer.start(1200000)
+    timer_widget = TimerWidget()
+    layout.addWidget(timer_widget)
+    widgets['timer'].append(timer_widget)
+    layout.addWidget(widgets['timer'][-1])
 
-    remaining_time = QLabel(f"{timer.remainingTime()}")
+#frame2()
 
 window.setLayout(layout)
 
