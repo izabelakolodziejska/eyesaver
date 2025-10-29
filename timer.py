@@ -1,5 +1,6 @@
-from PyQt6.QtCore import QTimer
-from PyQt6.QtWidgets import QWidget, QLabel
+from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtWidgets import QWidget, QLabel, QVBoxLayout
+from PyQt6.QtGui import QFont
 from playsound import playsound
 
 
@@ -7,13 +8,22 @@ class TimerWidget(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.time_20min = 20 * 60
+        self.time_20min = 10 #20 * 60
         self.time_20sec = 20
 
         self.mode = 'long'
         self.remaining_seconds = self.time_20min
 
         self.label = QLabel(self.format_time(self.remaining_seconds))
+        font = QFont('Sitka', 33)
+        font.setBold(True)
+        self.label.setStyleSheet("color: #6A006A; margin-top: 35px; margin-bottom: 30px;")
+        self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.label.setFont(font)
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.label)
+        self.setLayout(layout)
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_timer)
