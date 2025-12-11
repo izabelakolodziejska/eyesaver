@@ -1,10 +1,11 @@
-from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtCore import Qt, QTimer, pyqtSignal
 from PyQt6.QtWidgets import QWidget, QLabel, QVBoxLayout
 from PyQt6.QtGui import QFont
 from playsound import playsound
 
 
 class TimerWidget(QWidget):
+    mode_changed = pyqtSignal(str)
     def __init__(self):
         super().__init__()
 
@@ -42,6 +43,7 @@ class TimerWidget(QWidget):
                 playsound('success-jingle.wav')
                 self.mode = 'long'
                 self.remaining_seconds = self.time_20min
+            self.mode_changed.emit(self.mode)
         self.label.setText(self.format_time(self.remaining_seconds))
 
     def format_time(self, seconds):

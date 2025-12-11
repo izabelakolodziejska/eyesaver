@@ -70,7 +70,14 @@ def frame1():
 
 
 def frame2():
-    title2 = QLabel("DO YOUR STUFF!")
+    def on_mode_changed(mode):
+        if mode == "long":
+            title2.setText("computer time!")
+        else:
+            title2.setText("now look away :)")
+
+
+    title2 = QLabel("computer time!")
     font2 = QFont('Sitka', 22)
     font2.setBold(True)
     title2.setFont(font2)
@@ -82,6 +89,7 @@ def frame2():
     timer_widget = TimerWidget()
     widgets['timer'].append(timer_widget)
     layout.addWidget(widgets['timer'][-1])
+    timer_widget.mode_changed.connect(on_mode_changed)
 
 frame2()
 
