@@ -23,6 +23,16 @@ window.setPalette(palette)
 #vertical layout: title and two buttons
 layout = QVBoxLayout()
 
+def clear_widgets():
+    for key in widgets:
+        for w in widgets[key]:
+            w.hide()
+        widgets[key].clear()
+
+def start_timer():
+    clear_widgets()
+    frame2()
+
 def create_bttn(name):
     bttn = QPushButton(name)
     bttn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
@@ -60,6 +70,7 @@ def frame1():
     layout.addWidget(widgets['title'][-1])
 
     start = create_bttn('start')
+    start.clicked.connect(start_timer)
     widgets['button'].append(start)
     layout.addWidget(widgets['button'][-1], alignment=Qt.AlignmentFlag.AlignCenter)
 
@@ -91,7 +102,7 @@ def frame2():
     layout.addWidget(widgets['timer'][-1])
     timer_widget.mode_changed.connect(on_mode_changed)
 
-frame2()
+frame1()
 
 window.setLayout(layout)
 
