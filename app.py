@@ -33,17 +33,9 @@ def clear_widgets():
             w.hide()
         widgets[key].clear()
 
-def start_timer():
+def start_frame(function):
     clear_widgets()
-    frame2()
-
-def go_back():
-    clear_widgets()
-    frame1()
-
-def show_about():
-    clear_widgets()
-    frame3()
+    function()
 
 def create_bttn(name):
     bttn = QPushButton(name)
@@ -80,13 +72,13 @@ def frame1():
     layout.addWidget(widgets['title'][-1])
 
     start = create_bttn('start')
-    start.clicked.connect(start_timer)
+    start.clicked.connect(lambda: start_frame(frame2))
     widgets['button'].append(start)
     layout.addWidget(widgets['button'][-1], alignment=Qt.AlignmentFlag.AlignCenter)
 
     about = create_bttn('about')
     widgets['button'].append(about)
-    about.clicked.connect(show_about)
+    about.clicked.connect(lambda: start_frame(frame3))
     layout.addWidget(widgets['button'][-1], alignment=Qt.AlignmentFlag.AlignCenter)
 
 
@@ -127,11 +119,11 @@ def frame3():
     layout.addWidget(widgets['text'][-1])
 
     back = create_bttn('go back')
-    back.clicked.connect(go_back)
+    back.clicked.connect(lambda: start_frame(frame1))
     widgets['button'].append(back)
     layout.addWidget(widgets['button'][-1], alignment=Qt.AlignmentFlag.AlignCenter)
 
-frame1()
+start_frame(frame1)
 
 window.setLayout(layout)
 
