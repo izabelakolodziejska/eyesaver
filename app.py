@@ -89,6 +89,7 @@ def frame2():
             title2.setText("computer time!")
         else:
             title2.setText("now look away :)")
+            window.showNormal()
 
 
     title2 = QLabel("computer time!")
